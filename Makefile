@@ -1,17 +1,24 @@
 
-compile:
-	javac -g density/ParamsPre.java
-	java density.ParamsPre typesafe > density/Params.java
-	javac -g density/*.java density/tools/*.java
-	java density.Params density/*.java
-	javac -g ptolemy/plot/*.java
-	cat density/help.html.pre > density/help.html; java density.Params write >> density/help.html; echo "</blockquote><br></body></html>" >> density/help.html
-	javadoc -d html density/Runner.java density/Params.java density/ParamsPre.java density/Evaluate.java
-	zip maxentdoc.zip html/density/Runner.html html/density/Params.html html/density/ParamsPre.html html/density/Evaluate.html
+preflight:
+	javac -d bin -g src/resources/com/macfaq/io/Little*.java
+	javac -d bin -g src/resources/gnu/getopt/Getopt.java src/resources/gnu/getopt/LongOpt.java
+	javac -d bin -g src/resources/gui/layouts/*.java
+	javac -d bin -g -classpath src/resources src/resources/ptolemy/plot/*.java
+	
+	javac -d bin -g -classpath src:src/resources src/maxent/ParamsPre.java
+	java -classpath bin:src maxent.ParamsPre typesafe > src/maxent/Params.java
+	javac -d bin -g -classpath src:src/resources src/maxent/*.java
+	javac -d bin -g -classpath src:src/resources src/maxent/tools/*.java
 
-distribution: compile
-	jar cvfm maxent.jar density/mc.mf density/*.class density/*.html gnu/getopt/* gui/layouts/*.class com/macfaq/io/LittleEndian*.class density/tools/*.class ptolemy/plot/*.class density/parameters.csv
+	cat src/maxent/help.html.pre > bin/maxent/help.html
+	java -classpath bin:src maxent.Params write >> bin/maxent/help.html 
+	echo "</blockquote><br></body></html>" >> bin/maxent/help.html
+
+	javadoc -d html -classpath src:src/resources src/maxent/Runner.java src/maxent/Params.java src/maxent/ParamsPre.java src/maxent/Evaluate.java
+	zip maxentdoc.zip html/maxent/Runner.html html/maxent/Params.html html/maxent/ParamsPre.html html/maxent/Evaluate.html
+
+distribution: preflight
+	jar cvfm maxent.jar src/maxent/mc.mf bin/maxent/*.class bin/maxent/*.html bin/gnu/getopt/*.class bin/gui/layouts/*.class bin/com/macfaq/io/LittleEndian*.class bin/maxent/tools/*.class bin/ptolemy/plot/*.class src/maxent/parameters.csv
 	zip maxent.zip maxent.jar readme.txt maxent.bat
 
-clean:
-	rm density/*.class
+

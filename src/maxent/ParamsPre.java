@@ -37,7 +37,7 @@ public class ParamsPre extends Parameters {
     HashMap betaMap = new HashMap();
 
     String commandLine(String species) { // to repeat
-        String result = "java density.MaxEnt nowarnings noprefixes";
+        String result = "java maxent.MaxEnt nowarnings noprefixes";
         if (species != null)
             result += " -E \"\" -E " + species;
         for (Parameter param : allParams())
@@ -300,7 +300,7 @@ public class ParamsPre extends Parameters {
     };
 
     void typesafe() {
-        System.out.println("package density;");
+        System.out.println("package maxent;");
         System.out.println("\n// Automatically created\n");
         System.out.println("/**");
         for (String s : paramsJavadoc)

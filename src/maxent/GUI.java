@@ -1,4 +1,4 @@
-/* /*
+/*
 Copyright (c) 2016 Steven Phillips, Miro Dudik and Rob Schapire
 
 Permission is hereby granted, free of charge, to any person obtaining
@@ -98,73 +98,79 @@ public class GUI {
     }
 
     JPanel controls() {
-	JPanel checks = new JPanel();
-	checks.setLayout(new GridLayout(0, 1));
-	ButtonGroup group = new ButtonGroup();
-	featureButtons = new JCheckBox[featureTypes.length];
-	for (int i=0; i<featureTypes.length; i++) {
-	    JCheckBox button = new JCheckBox(featureTypes[i] + " features");
-	    featureButtons[i] = button;
-	    setToolTipText(featureButtons[i], "Feature types to be used during training.  See Help for details.");
-	    checks.add(button);
-	    if (featureTypes[i].equals("Auto")) {
-	        setToolTipText(featureButtons[i], "<html>Allow automatic limiting of feature types for small sample sizes,<br>with feature types being a subset of those selected above.");
-		button.addItemListener(new ItemListener() {
-			public void itemStateChanged(ItemEvent e) {
-			    boolean sel = (e.getStateChange() == ItemEvent.SELECTED);
-			    for (int i=0; i<featureButtons.length-1; i++) {
-//				if (sel)
-//				    featureButtons[i].setSelected(true);
-				featureButtons[i].setEnabled(!sel);
-			    }
-			}});
-		button.setSelected(params.getboolean("autofeature"));
-	    }
-	    else button.setSelected(params.getboolean(featureTypes[i]));
+        JPanel checks = new JPanel();
+        checks.setLayout(new GridLayout(0, 1));
+        ButtonGroup group = new ButtonGroup();
+        featureButtons = new JCheckBox[featureTypes.length];
+        for (int i = 0; i < featureTypes.length; i++) {
+            JCheckBox button = new JCheckBox(featureTypes[i] + " features");
+            featureButtons[i] = button;
+            setToolTipText(featureButtons[i], "Feature types to be used during training.  See Help for details.");
+            checks.add(button);
+            if (featureTypes[i].equals("Auto")) {
+                setToolTipText(featureButtons[i],
+                        "<html>Allow automatic limiting of feature types for small sample sizes,<br>with feature types being a subset of those selected above.");
+                button.addItemListener(new ItemListener() {
+                    public void itemStateChanged(ItemEvent e) {
+                        boolean sel = (e.getStateChange() == ItemEvent.SELECTED);
+                        for (int i = 0; i < featureButtons.length - 1; i++) {
+                            // if (sel)
+                            // featureButtons[i].setSelected(true);
+                            featureButtons[i].setEnabled(!sel);
+                        }
+                    }
+                });
+                button.setSelected(params.getboolean("autofeature"));
+            } else
+                button.setSelected(params.getboolean(featureTypes[i]));
 
-	}
+        }
 
-	checks.setBorder(BorderFactory.createEmptyBorder(0,0,0,20));
-	runButton = new JButton("Run");
-	runButton.addActionListener(new ActionListener() {
-        public void actionPerformed(ActionEvent e) {
-		    doRun();
-        }});
-	JButton paramsButton = new JButton("Settings");
-	paramsButton.addActionListener(new ActionListener() {
-		public void actionPerformed(ActionEvent e) {
-		    paramsFrame.setVisible(true);
-		    paramsFrame.toFront();
-		}});
-	JButton helpButton = new JButton("Help");
-	helpButton.addActionListener(new ActionListener() {
-		public void actionPerformed(ActionEvent e) {
-		    if (helpFrame==null) {
-			createHelpPane();
-		    } else {
-			helpFrame.setVisible(true);
-			helpFrame.toFront();
-		    }
-		}});
-	
-	JPanel buttons = new JPanel();
-	buttons.setLayout(new GridLayout(1,0));
-	buttons.add(runButton);
-	buttons.add(paramsButton);
-	buttons.add(helpButton);
-	
-	JPanel all = new JPanel();
-	all.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
-	all.setLayout(new BorderLayout());
-	all.add(createParamsPanes(), BorderLayout.EAST);
-	all.add(checks, BorderLayout.WEST);
-	all.add(buttons, BorderLayout.SOUTH);
+        checks.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 20));
+        runButton = new JButton("Run");
+        runButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                doRun();
+            }
+        });
+        JButton paramsButton = new JButton("Settings");
+        paramsButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                paramsFrame.setVisible(true);
+                paramsFrame.toFront();
+            }
+        });
+        JButton helpButton = new JButton("Help");
+        helpButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if (helpFrame == null) {
+                    createHelpPane();
+                } else {
+                    helpFrame.setVisible(true);
+                    helpFrame.toFront();
+                }
+            }
+        });
 
-	((JCheckBox) paneParams.get("tooltips")).addItemListener(new ItemListener() {
-		public void itemStateChanged(ItemEvent e) {
-		    showToolTips(e.getStateChange()==ItemEvent.SELECTED);
-		}});
-	return all;
+        JPanel buttons = new JPanel();
+        buttons.setLayout(new GridLayout(1, 0));
+        buttons.add(runButton);
+        buttons.add(paramsButton);
+        buttons.add(helpButton);
+
+        JPanel all = new JPanel();
+        all.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        all.setLayout(new BorderLayout());
+        all.add(createParamsPanes(), BorderLayout.EAST);
+        all.add(checks, BorderLayout.WEST);
+        all.add(buttons, BorderLayout.SOUTH);
+
+        ((JCheckBox) paneParams.get("tooltips")).addItemListener(new ItemListener() {
+            public void itemStateChanged(ItemEvent e) {
+                showToolTips(e.getStateChange() == ItemEvent.SELECTED);
+            }
+        });
+        return all;
     }
 
     void setFeatureTypes(String s) {
@@ -470,5 +476,7 @@ public class GUI {
         }
     }
 
-    void popupError(String s, Throwable e) { Utils.popupError(s, e); }
-}*/
+    void popupError(String s, Throwable e) {
+        Utils.popupError(s, e);
+    }
+}

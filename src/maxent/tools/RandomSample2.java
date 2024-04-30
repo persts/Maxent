@@ -23,6 +23,10 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 package maxent.tools;
 
+import maxent.Grid;
+import maxent.GridIO;
+import maxent.GridDimension;
+
 import java.io.*;
 import java.util.*;
 
@@ -54,8 +58,8 @@ public class RandomSample2 {
         for (int i = 0; i < numSamples; i++)
             cumulative[i] = generator.nextDouble() * 100.0;
         Arrays.sort(cumulative);
-        for (int c = 0; c < dim.ncols; c++) {
-            for (int r = 0; r < dim.nrows; r++)
+        for (int c = 0; c < dim.getncols(); c++) {
+            for (int r = 0; r < dim.getnrows(); r++)
                 if (grid.hasData(r, c)) {
                     double val = grid.eval(r, c);
                     int index = Arrays.binarySearch(cumulative, val);
@@ -76,8 +80,8 @@ public class RandomSample2 {
                 }
         }
         int[] cnt = new int[numSamples], select = new int[numSamples];
-        for (int c = 0; c < dim.ncols; c++)
-            for (int r = 0; r < dim.nrows; r++)
+        for (int c = 0; c < dim.getncols(); c++)
+            for (int r = 0; r < dim.getnrows(); r++)
                 if (grid.hasData(r, c)) {
                     double val = grid.eval(r, c);
                     int index = Arrays.binarySearch(cumulative, val);
@@ -98,8 +102,8 @@ public class RandomSample2 {
                 }
         for (int i = 0; i < numSamples; i++)
             select[i] = (int) (generator.nextDouble() * cnt[i]);
-        for (int c = 0; c < dim.ncols; c++)
-            for (int r = 0; r < dim.nrows; r++)
+        for (int c = 0; c < dim.getncols(); c++)
+            for (int r = 0; r < dim.getnrows(); r++)
                 if (grid.hasData(r, c)) {
                     double val = grid.eval(r, c);
                     int index = Arrays.binarySearch(cumulative, val);
