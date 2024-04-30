@@ -21,10 +21,17 @@ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
 */
 
-package density;
+package maxent;
 
 abstract class LayerFeature extends Feature {
     int layerType;
-    public LayerFeature(int n, String s, int t) { super(n,s); layerType=t; }
-    public int getLayerType() { return layerType; }
+
+    public LayerFeature(int n, String s, int t) {
+        super(n, s);
+        layerType = t;
+    }
+
+    public int getLayerType() {
+        return layerType;
+    }
 }

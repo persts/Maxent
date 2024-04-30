@@ -21,22 +21,30 @@ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
 */
 
-package density;
+package maxent;
 
 class CachedFeature extends Feature {
-    double[] vals=null;
+    double[] vals = null;
     Feature f;
 
     public CachedFeature(Feature f) {
-	this.f = f;
-	name = f.name;
-	n = f.n;
-	vals = new double[n];
-	for (int p=0; p<n; p++)
-	    vals[p] = f.eval(p);
+        this.f = f;
+        name = f.name;
+        n = f.n;
+        vals = new double[n];
+        for (int p = 0; p < n; p++)
+            vals[p] = f.eval(p);
     }
 
-    public double eval(int p) { return vals[p]; }
-    public double eval(Sample s) { return f.eval(s); }  // don't cache for samples
-    public boolean hasData(Sample s) { return f.hasData(s); }
+    public double eval(int p) {
+        return vals[p];
+    }
+
+    public double eval(Sample s) {
+        return f.eval(s);
+    } // don't cache for samples
+
+    public boolean hasData(Sample s) {
+        return f.hasData(s);
+    }
 }

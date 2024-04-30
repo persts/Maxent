@@ -21,10 +21,16 @@ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
 */
 
-package density;
+package maxent;
 
 public abstract class GridByte extends Grid {
-    public GridByte(GridDimension dim, String s) { super(dim, s); }
+    public GridByte(GridDimension dim, String s) {
+        super(dim, s);
+    }
+
     public abstract byte evalByte(int r, int c);
-    public float eval(int r, int c) { return evalByte(r, c); }
+
+    public float eval(int r, int c) {
+        return evalByte(r, c);
+    }
 }

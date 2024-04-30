@@ -6,6 +6,9 @@ semantic.cache
 html/
 help.html
 maxent.jar
+.vscode
+bin
+lib
 
 # Windows image file caches
 Thumbs.db

@@ -21,7 +21,7 @@ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
 */
 
-package density;
+package maxent;
 
 import java.text.NumberFormat;
 import javax.swing.*;
@@ -31,10 +31,10 @@ public class DoubleNumberField extends JFormattedTextField {
 
     // why is this so hard?
     public DoubleNumberField(Double val) {
-	super(new javax.swing.text.NumberFormatter());
-	NumberFormat nf = NumberFormat.getNumberInstance();
-	nf.setMaximumFractionDigits(9);
-	((NumberFormatter) getFormatter()).setFormat(nf);
-	setValue(val);
+        super(new javax.swing.text.NumberFormatter());
+        NumberFormat nf = NumberFormat.getNumberInstance();
+        nf.setMaximumFractionDigits(9);
+        ((NumberFormatter) getFormatter()).setFormat(nf);
+        setValue(val);
     }
 }

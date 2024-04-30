@@ -21,14 +21,21 @@ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
 */
 
-package density;
+package maxent;
 
 class ConstFeature extends Feature {
     double c;
+
     public ConstFeature(double c, int n) {
-	this.c = c;
-	this.n = n;
+        this.c = c;
+        this.n = n;
     }
-    public double eval(int p) { return c; }
-    public double eval(Sample s) { return c; }
+
+    public double eval(int p) {
+        return c;
+    }
+
+    public double eval(Sample s) {
+        return c;
+    }
 }

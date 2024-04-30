@@ -21,18 +21,18 @@ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
 */
 
-package density;
+package maxent;
 
 import javax.swing.*;
 
 public class WholeNumberField extends JFormattedTextField {
 
     public WholeNumberField(int val, int min, int max) {
-	super(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#######")));
-	javax.swing.text.NumberFormatter nf = (javax.swing.text.NumberFormatter) getFormatter();
-	nf.setMinimum(new Integer(min));
-	nf.setMaximum(new Integer(max));
-	nf.setValueClass(Integer.class);
-	setValue(new Integer(val));
+        super(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#######")));
+        javax.swing.text.NumberFormatter nf = (javax.swing.text.NumberFormatter) getFormatter();
+        nf.setMinimum(new Integer(min));
+        nf.setMaximum(new Integer(max));
+        nf.setValueClass(Integer.class);
+        setValue(new Integer(val));
     }
 }

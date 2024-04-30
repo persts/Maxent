@@ -21,18 +21,28 @@ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
 */
 
-package density;
+package maxent;
 
 class SquareFeature extends Feature {
     Feature f;
 
     public SquareFeature(Feature f, String s) {
-	super(f.n, s+"^2");
-	this.f = f;
+        super(f.n, s + "^2");
+        this.f = f;
     }
 
-    public double eval(int p) { double val = f.eval(p); return (val * val); }
-    public double eval(Sample s) { double val = f.eval(s); return (val * val); }
-    public boolean hasData(Sample s) { return f.hasData(s); }
+    public double eval(int p) {
+        double val = f.eval(p);
+        return (val * val);
+    }
+
+    public double eval(Sample s) {
+        double val = f.eval(s);
+        return (val * val);
+    }
+
+    public boolean hasData(Sample s) {
+        return f.hasData(s);
+    }
 
 }

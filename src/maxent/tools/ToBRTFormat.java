@@ -21,10 +21,10 @@ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
 */
 
-package density.tools;
+package maxent.tools;
 
 import gnu.getopt.*;
-import density.*;
+import maxent.*;
 import java.io.*;
 import java.text.*;
 import java.util.*;
@@ -37,7 +37,7 @@ public class ToBRTFormat {
     void writeForPrediction() throws IOException {
 	System.out.println("Writing data for prediction");
 	Grid[] grids = new Grid[ngrids];
-	PrintWriter out = density.Utils.writer(prefix+"_pred.csv");
+	PrintWriter out = maxent.Utils.writer(prefix+"_pred.csv");
 	NumberFormat nf = NumberFormat.getNumberInstance(Locale.US);
 	nf.setGroupingUsed(false);
 	for (int i=0; i<ngrids; i++) {
@@ -73,7 +73,7 @@ public class ToBRTFormat {
 
     void writeForTraining() throws IOException {
 	System.out.println("Writing training data");
-	PrintWriter out = density.Utils.writer(prefix+"_train.csv");
+	PrintWriter out = maxent.Utils.writer(prefix+"_train.csv");
 	Extractor extractor = new Extractor();
 	Layer[] fileLayers = new Layer[ngrids];
 	for (int i=0; i<ngrids; i++)
@@ -125,9 +125,9 @@ public class ToBRTFormat {
 	}
 	samplesFile = args[g.getOptind()];
 	gridDir = args[g.getOptind()+1];
-	density.Utils.generator = new Random(0);
+	maxent.Utils.generator = new Random(0);
 	try {
-	    fileNames = density.Utils.gridFileNames(gridDir);
+	    fileNames = maxent.Utils.gridFileNames(gridDir);
 	    ngrids = fileNames.length;
 	    writeForTraining();
 	    writeForPrediction();

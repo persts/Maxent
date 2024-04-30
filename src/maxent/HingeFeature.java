@@ -21,7 +21,7 @@ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
 */
 
-package density;
+package maxent;
 
 import java.util.*;
 
@@ -30,15 +30,26 @@ class HingeFeature extends Feature {
     Feature f;
 
     public HingeFeature(Feature f, double min, double max, String s) {
-	super(f.n, "'" + s);
-	this.f = f;
-	this.min = min;
-	this.max = max;
-	range = max-min;
+        super(f.n, "'" + s);
+        this.f = f;
+        this.min = min;
+        this.max = max;
+        range = max - min;
     }
 
-    double eval(double d) { return (d>min) ? (d-min)/range : 0.0; }
-    public double eval(int i) { return eval(f.eval(i)); }
-    public double eval(Sample s) { return eval(f.eval(s)); }
-    public boolean hasData(Sample s) { return f.hasData(s); }
+    double eval(double d) {
+        return (d > min) ? (d - min) / range : 0.0;
+    }
+
+    public double eval(int i) {
+        return eval(f.eval(i));
+    }
+
+    public double eval(Sample s) {
+        return eval(f.eval(s));
+    }
+
+    public boolean hasData(Sample s) {
+        return f.hasData(s);
+    }
 }

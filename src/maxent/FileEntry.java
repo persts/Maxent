@@ -21,7 +21,7 @@ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
 */
 
-package density;
+package maxent;
 
 import javax.swing.*;
 import java.awt.*;
@@ -39,81 +39,106 @@ class FileEntry extends JPanel {
     ActionListener listener;
 
     void setDirOnly() {
-	fileSelectionMode = JFileChooser.DIRECTORIES_ONLY;
+        fileSelectionMode = JFileChooser.DIRECTORIES_ONLY;
     }
+
     void setFilesOnly() {
-	fileSelectionMode = JFileChooser.FILES_ONLY;
+        fileSelectionMode = JFileChooser.FILES_ONLY;
     }
 
     public FileEntry(String title) {
-	this(title, (ActionListener) null);
+        this(title, (ActionListener) null);
     }
+
     public FileEntry(String title, String suffix) {
-	this(title, null, suffix);
+        this(title, null, suffix);
     }
+
     public FileEntry(String title, ActionListener ll) {
-	this(title, ll, fc.getAcceptAllFileFilter());
+        this(title, ll, fc.getAcceptAllFileFilter());
     }
+
     public FileEntry(String title, ActionListener ll, final String suffix) {
-	this(title, ll, (javax.swing.filechooser.FileFilter) null);
-	if (suffix==null)
-	    filter = new javax.swing.filechooser.FileFilter() {
-		    public boolean accept(File f) { return f.isDirectory(); }
-		    public String getDescription() { return "directories"; }
-		};
-	else
-	    filter = new javax.swing.filechooser.FileFilter() {
-		    public boolean accept(File f) {
-			if (f.isDirectory()) return true;
-			return f.getName().toLowerCase().endsWith(suffix);
-		    }
-		    public String getDescription() { 
-			return (fileSelectionMode == JFileChooser.FILES_AND_DIRECTORIES ? "directories and " : "") 
-			    + suffix + " files"; }
-		};
+        this(title, ll, (javax.swing.filechooser.FileFilter) null);
+        if (suffix == null)
+            filter = new javax.swing.filechooser.FileFilter() {
+                public boolean accept(File f) {
+                    return f.isDirectory();
+                }
+
+                public String getDescription() {
+                    return "directories";
+                }
+            };
+        else
+            filter = new javax.swing.filechooser.FileFilter() {
+                public boolean accept(File f) {
+                    if (f.isDirectory())
+                        return true;
+                    return f.getName().toLowerCase().endsWith(suffix);
+                }
+
+                public String getDescription() {
+                    return (fileSelectionMode == JFileChooser.FILES_AND_DIRECTORIES ? "directories and " : "")
+                            + suffix + " files";
+                }
+            };
     }
+
     public FileEntry(String title, ActionListener ll, javax.swing.filechooser.FileFilter ff) {
-	browse = new JButton("Browse");
-	listener = ll;
-	filter = ff;
-	browse.addActionListener(new ActionListener() {
-		public void actionPerformed(java.awt.event.ActionEvent e) {
-		    fc.setFileSelectionMode(fileSelectionMode);
-		    fc.resetChoosableFileFilters();
-		    fc.setFileFilter(filter);
-		    int returnVal = fc.showOpenDialog(FileEntry.this);
-		    if (returnVal == JFileChooser.APPROVE_OPTION) {
-			File file = fc.getSelectedFile();
-			if (!file.exists() && file.getParentFile().exists())
-			    file = file.getParentFile();
-			text.setText(file.getAbsolutePath());
-			passFileName(listener);
-		    }
-		}});
-	text.addActionListener(new ActionListener() {
-		public void actionPerformed(java.awt.event.ActionEvent e) {
-		    passFileName(listener);
-		}});
-	
-	setLayout(new BorderLayout());
-	add(label = new JLabel(title+" "), BorderLayout.WEST);
-	add(text, BorderLayout.CENTER);
-	add(browse, BorderLayout.EAST);
+        browse = new JButton("Browse");
+        listener = ll;
+        filter = ff;
+        browse.addActionListener(new ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                fc.setFileSelectionMode(fileSelectionMode);
+                fc.resetChoosableFileFilters();
+                fc.setFileFilter(filter);
+                int returnVal = fc.showOpenDialog(FileEntry.this);
+                if (returnVal == JFileChooser.APPROVE_OPTION) {
+                    File file = fc.getSelectedFile();
+                    if (!file.exists() && file.getParentFile().exists())
+                        file = file.getParentFile();
+                    text.setText(file.getAbsolutePath());
+                    passFileName(listener);
+                }
+            }
+        });
+        text.addActionListener(new ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                passFileName(listener);
+            }
+        });
+
+        setLayout(new BorderLayout());
+        add(label = new JLabel(title + " "), BorderLayout.WEST);
+        add(text, BorderLayout.CENTER);
+        add(browse, BorderLayout.EAST);
     }
 
     void passFileName(ActionListener listener) {
-	if (listener!=null)
-	    listener.actionPerformed(new ActionEvent(this, 0, text.getText()));
+        if (listener != null)
+            listener.actionPerformed(new ActionEvent(this, 0, text.getText()));
     }
 
-    String getText() { return text.getText().trim(); }
-    void setText(String s) { text.setText(s); passFileName(listener); }
-    void disable(String s) {
-	text.setText(s);
-	text.setEnabled(false);
-	browse.setEnabled(false);
+    String getText() {
+        return text.getText().trim();
     }
-    public void enable() { 
-	text.setEnabled(true); text.setText(""); browse.setEnabled(true); 
+
+    void setText(String s) {
+        text.setText(s);
+        passFileName(listener);
+    }
+
+    void disable(String s) {
+        text.setText(s);
+        text.setEnabled(false);
+        browse.setEnabled(false);
+    }
+
+    public void enable() {
+        text.setEnabled(true);
+        text.setText("");
+        browse.setEnabled(true);
     }
 }

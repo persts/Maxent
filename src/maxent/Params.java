@@ -1,4 +1,4 @@
-package density;
+package maxent;
 
 // Automatically created
 

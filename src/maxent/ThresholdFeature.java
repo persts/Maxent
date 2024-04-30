@@ -21,7 +21,7 @@ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
 */
 
-package density;
+package maxent;
 
 import java.util.*;
 
@@ -30,13 +30,24 @@ class ThresholdFeature extends Feature {
     Feature f;
 
     public ThresholdFeature(Feature f, double threshold, String s) {
-	super(f.n, "(" + threshold + "<" + s + ")");
-	this.f = f;
-	this.threshold = threshold;
+        super(f.n, "(" + threshold + "<" + s + ")");
+        this.f = f;
+        this.threshold = threshold;
     }
 
-    public double eval(int i) { return (f.eval(i) > threshold) ? 1.0 : 0.0; }
-    public double eval(Sample s) { return (f.eval(s) > threshold) ? 1.0 : 0.0; }
-    public boolean hasData(Sample s) { return f.hasData(s); }
-    boolean isBinary() { return true; }
+    public double eval(int i) {
+        return (f.eval(i) > threshold) ? 1.0 : 0.0;
+    }
+
+    public double eval(Sample s) {
+        return (f.eval(s) > threshold) ? 1.0 : 0.0;
+    }
+
+    public boolean hasData(Sample s) {
+        return f.hasData(s);
+    }
+
+    boolean isBinary() {
+        return true;
+    }
 }

@@ -21,21 +21,29 @@ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
 */
 
-package density;
+package maxent;
 
 class FeatureWithSamples extends Feature {
     float[] backgroundVals, sampleVals;
     int NODATA_value;
 
     public FeatureWithSamples(String name, float[] backgroundVals, float[] sampleVals, int nodata) {
-	this.name = name;
-	this.backgroundVals = backgroundVals;
-	this.sampleVals = sampleVals;
-	NODATA_value = nodata;
-	n = backgroundVals.length;
+        this.name = name;
+        this.backgroundVals = backgroundVals;
+        this.sampleVals = sampleVals;
+        NODATA_value = nodata;
+        n = backgroundVals.length;
     }
 
-    public double eval(int p) { return backgroundVals[p]; }
-    public double eval(Sample s) { return sampleVals[s.getPoint()]; }
-    public boolean hasData(Sample s) { return (sampleVals[s.getPoint()] != NODATA_value); }
+    public double eval(int p) {
+        return backgroundVals[p];
+    }
+
+    public double eval(Sample s) {
+        return sampleVals[s.getPoint()];
+    }
+
+    public boolean hasData(Sample s) {
+        return (sampleVals[s.getPoint()] != NODATA_value);
+    }
 }

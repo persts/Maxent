@@ -21,18 +21,26 @@ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
 */
 
-package density;
+package maxent;
 
 class HingeGeneratorFeature extends Feature {
     Feature f;
 
     public HingeGeneratorFeature(Feature f, String s) {
-	super(f.n, s);
-	this.f = f;
+        super(f.n, s);
+        this.f = f;
     }
 
-    public double eval(int p) { return f.eval(p); }
-    public double eval(Sample s) { return f.eval(s); }
-    public boolean hasData(Sample s) { return f.hasData(s); }
+    public double eval(int p) {
+        return f.eval(p);
+    }
+
+    public double eval(Sample s) {
+        return f.eval(s);
+    }
+
+    public boolean hasData(Sample s) {
+        return f.hasData(s);
+    }
 
 }
