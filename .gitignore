@@ -7,8 +7,10 @@ html/
 help.html
 maxent.jar
 .vscode
+.settings
 bin
 lib
+tests
 
 # Windows image file caches
 Thumbs.db
