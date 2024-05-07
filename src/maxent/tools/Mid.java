@@ -25,7 +25,6 @@ package maxent.tools;
 
 import maxent.*;
 import java.io.*;
-import java.text.*;
 import java.util.*;
 
 // Make a 0-1 probability of presence surface, with highest probability 

@@ -23,7 +23,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 package maxent.tools;
 
-import java.util.*;
 
 class NodePriorityQueue {
     Node[] heap, nodes;

@@ -27,9 +27,7 @@ import javax.swing.*;
 import javax.swing.text.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.text.NumberFormat;
 
-import java.io.*;
 import java.util.*;
 
 public class GUI {

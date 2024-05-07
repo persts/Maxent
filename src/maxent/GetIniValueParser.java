@@ -25,7 +25,6 @@ package maxent;
 
 import java.io.*;
 import java.util.*;
-import java.util.*;
 
 /**
  * A class for handling Windows-style INI files. The file format is as

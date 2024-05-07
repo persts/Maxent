@@ -23,8 +23,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 package maxent;
 
-import javax.swing.*;
-import java.util.*;
 import java.awt.*;
 import java.text.*;
 import java.awt.image.*;

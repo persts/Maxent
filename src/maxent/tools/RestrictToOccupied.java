@@ -24,9 +24,10 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 package maxent.tools;
 
 import maxent.*;
+
 import gnu.getopt.*;
+
 import java.io.*;
-import java.util.*;
 
 public class RestrictToOccupied {
     double mindist, maxdist, threshold = -1;

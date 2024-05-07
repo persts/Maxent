@@ -27,7 +27,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
-import java.util.*;
 
 class FileEntry extends JPanel {
     final JTextField text = new JTextField(20);

@@ -23,7 +23,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 package maxent;
 
-import java.util.*;
 
 class HingeFeature extends Feature {
     double min, max, range;

@@ -24,7 +24,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 package maxent;
 
 import java.util.*;
-import java.io.*;
 
 public class Parameters {
     ArrayList<Parameter> orderedParams = new ArrayList();

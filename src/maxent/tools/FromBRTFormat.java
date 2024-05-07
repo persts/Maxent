@@ -26,7 +26,6 @@ package maxent.tools;
 import gnu.getopt.*;
 import maxent.*;
 import java.io.*;
-import java.util.*;
 
 public class FromBRTFormat {
 

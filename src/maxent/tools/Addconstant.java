@@ -24,7 +24,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 package maxent.tools;
 
 import java.io.*;
-import java.util.*;
 import maxent.*;
 
 public class Addconstant {

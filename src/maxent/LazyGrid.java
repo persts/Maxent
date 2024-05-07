@@ -24,7 +24,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 package maxent;
 
 import java.io.*;
-import java.util.*;
 import java.util.zip.*;
 
 public class LazyGrid extends Grid {

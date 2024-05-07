@@ -24,7 +24,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 package maxent;
 
 import java.util.*;
-import java.lang.*;
 
 abstract public class Feature {
     public static final int BINARY = 0, LINEAR = 1, SQUARE = 2, PRODUCT = 3, THR_GEN = 4, THR = 5,

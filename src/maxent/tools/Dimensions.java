@@ -25,8 +25,6 @@ package maxent.tools;
 
 import java.io.*;
 import maxent.*;
-import gnu.getopt.*;
-import java.util.*;
 
 public class Dimensions {
 

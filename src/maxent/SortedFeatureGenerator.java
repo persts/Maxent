@@ -26,7 +26,6 @@ package maxent;
 // add correct eval to toFeature
 
 import java.util.*;
-import java.io.*;
 import java.text.*;
 
 abstract class SortedFeatureGenerator implements FeatureGenerator {

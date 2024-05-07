@@ -23,11 +23,8 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 package maxent;
 
-// add correct eval to toFeature
-
-import java.util.*;
 import java.io.*;
-import java.text.*;
+
 
 class HingeFeatureGenerator extends SortedFeatureGenerator {
 

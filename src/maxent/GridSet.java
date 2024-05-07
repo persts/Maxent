@@ -25,7 +25,6 @@ package maxent;
 
 // works with a collection of Grids, e.g. makes them into a collection of features.
 
-import java.io.*;
 import java.util.*;
 
 public class GridSet {

@@ -24,8 +24,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 package maxent;
 
 import javax.swing.*;
-import java.io.*;
-import java.util.*;
 
 public class MaxEnt {
 

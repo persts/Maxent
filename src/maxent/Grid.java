@@ -23,10 +23,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 package maxent;
 
-import java.text.*;
-//import java.awt.event.*;
-import java.io.*;
-import java.util.zip.*;
 
 public abstract class Grid {
     public static final int SHORT = 0, FLOAT = 1, BYTE = 2, INT = 3, DOUBLE = 4, UBYTE = 5;
