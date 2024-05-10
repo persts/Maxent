@@ -202,14 +202,14 @@ public class Project {
             } else if ((index = descr.indexOf('\'')) != -1) { // hinge
                 String f0 = descr.substring(index + 1);
                 // g = new HingeGrid(getGrid(f0), min, max);
-                allLambdas.add(new Double(lambda));
+                allLambdas.add(Double.valueOf(lambda));
                 HingeGrid gg = new HingeGrid(getGrid(f0), min, max);
                 gg.name = descr;
                 allFeatures.add(gg);
             } else if ((index = descr.indexOf('`')) != -1) { // revhinge
                 String f0 = descr.substring(index + 1);
                 // g = new HingeGrid(getGrid(f0), min, max);
-                allLambdas.add(new Double(lambda));
+                allLambdas.add(Double.valueOf(lambda));
                 HingeGrid gg = new HingeGrid(revGrid(getGrid(f0)), -max, -min);
                 gg.name = descr;
                 allFeatures.add(gg);
@@ -230,7 +230,7 @@ public class Project {
             }
             if (g != null) {
                 Pfeature gg = new ScaledGrid(g, min, max);
-                allLambdas.add(new Double(lambda));
+                allLambdas.add(Double.valueOf(lambda));
                 allFeatures.add(gg);
                 gg.name = descr;
             }
@@ -635,8 +635,8 @@ public class Project {
         csv.apply(csv.new Applier() {
             public void process() {
                 String[] fields = csv.getCurrentRecord();
-                raw.add(new Double(Double.parseDouble(fields[0].replaceAll(",", "."))));
-                cumulative.add(new Double(Double.parseDouble(fields[1].replaceAll(",", "."))));
+                raw.add(Double.valueOf(fields[0].replaceAll(",", ".")));
+                cumulative.add(Double.valueOf(fields[1].replaceAll(",", ".")));
             }
         });
         return rawcumaa2raw2cum(raw, cumulative);

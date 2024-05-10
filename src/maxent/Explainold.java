@@ -198,7 +198,7 @@ public class Explainold extends JFrame implements ActionListener {
 
     double contribution(int i, double v) {
         for (int j = 0; j < nvars; j++)
-            map.put(predictors[j].getName(), new Double(mean[j]));
+            map.put(predictors[j].getName(), Double.valueOf(mean[j]));
         double before = projgrid.eval(0, 0);
         map.put(predictors[i].getName(), v);
         double after = projgrid.eval(0, 0);
@@ -337,7 +337,7 @@ public class Explainold extends JFrame implements ActionListener {
         logitplot.clear(0);
 
         for (int i = 0; i < nvars; i++)
-            map.put(predictors[i].getName(), new Double(predictors[i].eval(r, c)));
+            map.put(predictors[i].getName(), Double.valueOf(predictors[i].eval(r, c)));
         double logit = projgrid.eval(0, 0) - Math.log(proj.densityNormalizer) + proj.entropy;
         for (int i = 0; i < nvars; i++) {
             if (predictors[i].hasData(r, c)) {

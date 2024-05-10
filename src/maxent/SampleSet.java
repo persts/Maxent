@@ -162,7 +162,7 @@ public class SampleSet {
             for (int i = 0; i < olda.size(); i++) {
                 Sample s = (Sample) olda.get(i);
                 Object o = (dim == null) ? (Object) (s.getLat() + "" + s.getLon())
-                        : new Integer(s.getRow() * dim.ncols + s.getCol());
+                        : Integer.valueOf(s.getRow() * dim.ncols + s.getCol());
                 if (!points.contains(o)) {
                     points.add(o);
                     newa.add(olda.get(i));

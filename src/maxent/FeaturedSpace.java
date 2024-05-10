@@ -123,7 +123,7 @@ public class FeaturedSpace {
         ArrayList da = new ArrayList();
         for (int i = 0; i < numsamples; i++)
             if (hasAllData(ss[i]))
-                da.add(new Double(getDensity(ss[i])));
+                da.add(Double.valueOf(getDensity(ss[i])));
         double[] d = new double[da.size()];
         for (int i = 0; i < d.length; i++)
             d[i] = ((Double) da.get(i)).doubleValue();

@@ -110,9 +110,9 @@ abstract class SortedFeatureGenerator implements FeatureGenerator {
 	cachedFeature = new CachedFeature(feature);
 	Integer[] sortedValsObj = new Integer[numVals];
 	for (int i=0; i<numPoints; i++)
-	    sortedValsObj[i] = new Integer(i);
+	    sortedValsObj[i] = Integer.valueOf(i);
 	for (int i=0; i<numSamples; i++)
-	    sortedValsObj[numPoints + i] = new Integer(-i-1);
+	    sortedValsObj[numPoints + i] = Integer.valueOf(-i-1);
 	Arrays.sort(sortedValsObj, new SampleAndPointComparator());
 
 	sortedVals = new int[numVals];

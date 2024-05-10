@@ -50,7 +50,7 @@ abstract class DoubleIterator {
         reset();
         ArrayList a = new ArrayList();
         while (hasNext())
-            a.add(new Double(getNext() / div));
+            a.add(Double.valueOf(getNext() / div));
         double[] d = new double[a.size()];
         for (int i = 0; i < d.length; i++)
             d[i] = ((Double) a.get(i)).doubleValue();

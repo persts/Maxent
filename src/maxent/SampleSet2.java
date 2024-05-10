@@ -209,7 +209,7 @@ public class SampleSet2 extends SampleSet {
             double[] data = (double[]) datamap.get(s[i]);
             HashMap map = new HashMap();
             for (int j = 0; j < n; j++)
-                map.put(layers[j].getName(), (data[j] == SampleSet.NODATA_value) ? null : new Double(data[j]));
+                map.put(layers[j].getName(), (data[j] == SampleSet.NODATA_value) ? null : Double.valueOf(data[j]));
             s[i].featureMap = map;
         }
     }

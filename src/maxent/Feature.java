@@ -192,8 +192,8 @@ abstract public class Feature {
         HashSet set = new HashSet();
         for (int i = 0; i < n; i++) {
             double val = eval(i);
-            if (!set.contains(new Double(val)))
-                set.add(new Double(val));
+            if (!set.contains(Double.valueOf(val)))
+                set.add(Double.valueOf(val));
         }
         Double[] vals = (Double[]) set.toArray(new Double[0]);
         Arrays.sort(vals);

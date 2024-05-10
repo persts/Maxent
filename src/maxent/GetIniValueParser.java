@@ -110,7 +110,7 @@ public class GetIniValueParser extends Object {
         values = new Vector();
         // open the file
         try {
-            DataInputStream ini = new DataInputStream(new BufferedInputStream(new FileInputStream(fileName)));
+            BufferedReader ini = new BufferedReader(new InputStreamReader(new FileInputStream(fileName)));
             String line = "";
             // read all the lines in
             while (true) {

@@ -383,7 +383,7 @@ public class Explain extends JFrame implements ActionListener {
         logitplot.clear(0);
 
         for (int i = 0; i < nvars; i++)
-            map.put(predictors[i].getName(), new Double(predictors[i].eval(r, c)));
+            map.put(predictors[i].getName(), Double.valueOf(predictors[i].eval(r, c)));
         proj.exponent = true;
         double logit = projgrid.eval(0, 0) - Math.log(proj.densityNormalizer) + proj.entropy;
         double sum = 0.0;

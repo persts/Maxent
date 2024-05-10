@@ -124,7 +124,7 @@ public class Csv {
         this.headers = headers;
         for (int i = 0; i < headers.length; i++) {
             headers[i] = headers[i];
-            headerMap.put(headers[i], new Integer(i));
+            headerMap.put(headers[i], Integer.valueOf(i));
         }
     }
 

@@ -1052,7 +1052,7 @@ public class Runner {
         HashSet s = new HashSet();
         for (int r = 0; r < nr; r++)
             for (int c = 0; c < indices[r].length; c++)
-                s.add(new Double(indices[r][c]));
+                s.add(Double.valueOf(indices[r][c]));
         Double[] cats = (Double[]) s.toArray(new Double[0]);
         double[] categories = new double[cats.length];
         for (int c = 0; c < cats.length; c++)
@@ -1434,7 +1434,7 @@ public class Runner {
             ArrayList a = new ArrayList();
             for (int i = 0; i < sss.length; i++)
                 if (f[j].hasData(sss[i]))
-                    a.add(new Double(f[j].eval(sss[i])));
+                    a.add(Double.valueOf(f[j].eval(sss[i])));
             if (a.size() == 0) {
                 Utils.warn2("Species " + theSpecies + " missing all data for " + f[j].name + ", skipping",
                         "skippingBecauseNoData");
@@ -1526,7 +1526,7 @@ public class Runner {
             if (iscat) {
                 HashSet s = new HashSet();
                 for (int j = 0; j < baseFeatures[i].n; j++)
-                    s.add(new Double(baseFeatures[i].eval(j)));
+                    s.add(Double.valueOf(baseFeatures[i].eval(j)));
                 Double[] cats = (Double[]) s.toArray(new Double[0]);
                 double[] allcats = new double[cats.length];
                 for (int j = 0; j < cats.length; j++)
@@ -1585,7 +1585,7 @@ public class Runner {
         double[][] categories = new double[baseFeatures.length][];
         double[] averages = sampleAverages(baseFeatures, samples, categories, isCategorical);
         for (int i = 0; i < baseFeatures.length; i++)
-            map.put(baseFeatures[i].name, new Double(averages[i]));
+            map.put(baseFeatures[i].name, Double.valueOf(averages[i]));
 
         // final Sample sample = new Sample(0,0,0,0,0,"",map);
         Project proj = new Project(params);
@@ -1666,11 +1666,11 @@ public class Runner {
                 x[j] = minx + j * (maxx - minx) / (num - 1);
         }
         double[] y = new double[x.length];
-        map.put(var, new Double(categories != null ? categories[0] - 1 // less than all
+        map.put(var, Double.valueOf(categories != null ? categories[0] - 1 // less than all
                 : minx));
         double zeropoint = projgrid.eval(0, 0);
         for (int j = 0; j < x.length; j++) {
-            map.put(var, new Double(x[j]));
+            map.put(var, Double.valueOf(x[j]));
             y[j] = projgrid.eval(0, 0) - (exponent ? zeropoint : 0.0);
         }
         map.put(var, savedMean);
@@ -2045,7 +2045,7 @@ public class Runner {
         ArrayList a = new ArrayList();
         for (int i = 0; i < X.numSamples; i++)
             if (hasAllData(X.samples[i], baseFeatures))
-                a.add(new Double(X.getDensity(X.samples[i]) / X.densityNormalizer));
+                a.add(Double.valueOf(X.getDensity(X.samples[i]) / X.densityNormalizer));
         double[] trainvals = new double[a.size()];
         for (int i = 0; i < trainvals.length; i++) {
             trainvals[i] = ((Double) a.get(i)).doubleValue();

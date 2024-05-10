@@ -47,7 +47,7 @@ public class NceasApply {
                 for (int j = 0; j < 4; j++)
                     map.put(headers[j], csv.get(j));
                 for (int j = 4; j < last; j++) {
-                    Double val = new Double(Double.parseDouble(csv.get(j)));
+                    Double val = Double.valueOf(csv.get(j));
                     map.put(headers[j], val);
                     map.put(headers[j] + "a", val);
                 }

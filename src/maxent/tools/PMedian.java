@@ -224,9 +224,9 @@ public class PMedian {
             if (isCategorical[i]) {
                 HashSet sa = new HashSet(), sb = new HashSet();
                 for (int j = 0; j < a.length; j++)
-                    sa.add(new Double(a[j][i]));
+                    sa.add(Double.valueOf(a[j][i]));
                 for (int j = 0; j < b.length; j++)
-                    sb.add(new Double(b[j][i]));
+                    sb.add(Double.valueOf(b[j][i]));
                 int cnt = 0;
                 for (Iterator it = sa.iterator(); it.hasNext();)
                     if (sb.contains(it.next()))
@@ -253,7 +253,7 @@ public class PMedian {
         for (int i = 0; i < a.length; i++)
             for (int j = 0; j < a[i].length; j++) {
                 if (isCategorical[j])
-                    allvals[j].add(new Double(a[i][j]));
+                    allvals[j].add(Double.valueOf(a[i][j]));
                 else {
                     if (i == 0 || a[i][j] < mins[j])
                         mins[j] = a[i][j];
