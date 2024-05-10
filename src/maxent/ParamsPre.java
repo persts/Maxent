@@ -268,6 +268,7 @@ public class ParamsPre extends Parameters {
                         }
                     }
                 }
+                in.close();
             } catch (IOException e) {
                 checkError(e.toString());
             }

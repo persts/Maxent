@@ -62,6 +62,7 @@ public class NceasMonge {
                     double val = Double.parseDouble(in.readLine());
                     out.println(samples[j][0] + "," + samples[j][1] + "," + val);
                 }
+                in.close();
                 out.close();
             }
         } catch (IOException e) {

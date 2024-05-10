@@ -140,6 +140,7 @@ public class GridIO {
                 nativetype = Grid.DOUBLE;
             else
                 Utils.fatalException("File " + fileName + ": unsupported data type " + nbits + " bits", null);
+            in.close();
         }
 
         double get2d(GetIniValueParser parser, String f1, String f2) {
